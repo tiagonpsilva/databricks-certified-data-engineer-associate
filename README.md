@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=tiagonpsilva&repo=databricks-certified-data-engineer-associate&layout=compact" alt="Top Langs" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white" alt="SQL" />
+  <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter" />
   <img src="https://img.shields.io/badge/Databricks-FF3621?style=for-the-badge&logo=databricks&logoColor=white" alt="Databricks" />
   <img src="https://komarev.com/ghpvc/?username=tiagonpsilva&repo=databricks-certified-data-engineer-associate&color=orange" alt="Visualizações" />
 </p>
