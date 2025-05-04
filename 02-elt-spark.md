@@ -14,17 +14,20 @@ SELECT * FROM parquet.`/mnt/dados/parquet_dir/`;
 ```
 - O prefixo após FROM (ex: parquet, csv) indica o tipo de dado.
 
-Diagrama ASCII:
 ```
-[Arquivos CSV/Parquet/JSON]
-        |
-        v
-   +-----------+
-   |   Spark   |
-   +-----------+
-        |
-        v
-   [DataFrame]
+┌───────────────────────────────┐
+│ Arquivos CSV/Parquet/JSON    │
+└───────────────┬───────────────┘
+                |
+                v
+           ┌────────┐
+           │ Spark  │
+           └────────┘
+                |
+                v
+          ┌────────────┐
+          │DataFrame(s)│
+          └────────────┘
 ```
 
 ## 2.2 Criação de Views e CTEs
@@ -84,15 +87,19 @@ SELECT from_json(json_col, 'struct<campo1:string,campo2:int>') FROM tabela_json;
 ## 2.7 Joins, Explode, Pivot
 Joins relacionam tabelas, explode transforma arrays em linhas e pivot converte dados de formato longo para largo. Essas operações são fundamentais para análises relacionais e transformação de dados.
 
-Diagrama ASCII:
 ```
-Tabela Vendas      Tabela Clientes
-    |                   |
-    +--------+----------+
-             |
-           [JOIN]
-             |
-         Tabela Final
+┌──────────────┐      ┌──────────────┐
+│ Tabela       │      │ Tabela       │
+│  Vendas      │      │  Clientes    │
+└───────┬──────┘      └───────┬──────┘
+        |                     |
+        +---------+-----------+
+                  |
+                [JOIN]
+                  |
+           ┌──────────────┐
+           │Tabela Final  │
+           └──────────────┘
 ```
 
 Exemplo:

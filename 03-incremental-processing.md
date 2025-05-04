@@ -4,15 +4,14 @@
 
 O Delta Lake é uma camada de armazenamento que traz transações ACID (Atomicidade, Consistência, Isolamento, Durabilidade) para o mundo do big data. Isso significa que operações de leitura e escrita são seguras, consistentes e recuperáveis, mesmo em caso de falhas. O transaction log do Delta Lake permite rollback, time travel e garante integridade dos dados.
 
-Diagrama ASCII:
 ```
-+-------------------+
-|   Delta Lake      |
-+-------------------+
-| ACID Transactions |
-| Time Travel       |
-| Rollback          |
-+-------------------+
+┌───────────────┐
+│  Delta Lake   │
+├───────────────┤
+│ ACID          │
+│ Time Travel   │
+│ Rollback      │
+└───────────────┘
 ```
 
 Exemplo:
@@ -33,11 +32,12 @@ CREATE TABLE vendas_ext (id INT, valor DOUBLE) USING DELTA LOCATION '/mnt/dados/
 
 O Delta Lake mantém o histórico de todas as operações realizadas em uma tabela, permitindo auditoria, rollback e time travel. Cada alteração gera uma nova versão da tabela, que pode ser consultada a qualquer momento.
 
-Diagrama ASCII:
 ```
-[Operação 1] -> [Operação 2] -> [Operação 3]
-      |             |             |
-   Versão 1      Versão 2      Versão 3
+┌────────────┐   ┌────────────┐   ┌────────────┐
+│ Operação 1 │-->| Operação 2 │-->| Operação 3 │
+└─────┬──────┘   └─────┬──────┘   └─────┬──────┘
+      |                |                |
+   Versão 1         Versão 2         Versão 3
 ```
 
 Exemplo:
@@ -77,10 +77,22 @@ Essas operações facilitam ingestão incremental e deduplicação:
 - **COPY INTO:** carrega dados de arquivos externos sem duplicar.
 - **DLT (Delta Live Tables):** pipelines declarativos para ingestão e transformação.
 
-Diagrama ASCII:
 ```
-[Novos Dados] ---> [MERGE] ---> [Tabela Destino]
-[Arquivos Externos] ---> [COPY INTO] ---> [Tabela Destino]
+┌──────────────┐        ┌──────────────┐
+│ Novos Dados  │----->  │   MERGE      │
+└──────────────┘        └──────┬───────┘
+                               |
+                        ┌──────────────┐
+                        │Tabela Destino│
+                        └──────────────┘
+
+┌────────────────┐      ┌──────────────┐
+│ArquivosExternos│----->│   COPY INTO  │
+└────────────────┘      └──────┬───────┘
+                               |
+                        ┌──────────────┐
+                        │Tabela Destino│
+                        └──────────────┘
 ```
 
 Exemplo:

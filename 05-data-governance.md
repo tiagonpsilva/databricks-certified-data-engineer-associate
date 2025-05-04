@@ -11,12 +11,22 @@ Exemplo:
 
 O **Metastore** armazena metadados de tabelas, views e permissões, funcionando como um "catálogo central" de informações sobre os dados. O **Catálogo** é uma camada lógica para organizar schemas e tabelas, especialmente com o Unity Catalog, permitindo separar ambientes e domínios de negócio.
 
-Diagrama ASCII:
 ```
-[Metastore]
-    |
-    v
-[Catálogo] -> [Schema] -> [Tabela]
+┌────────────┐
+│ Metastore  │
+└─────┬──────┘
+      |
+┌─────▼──────┐
+│ Catálogo   │
+└─────┬──────┘
+      |
+┌─────▼──────┐
+│  Schema    │
+└─────┬──────┘
+      |
+┌─────▼──────┐
+│  Tabela    │
+└────────────┘
 ```
 
 Exemplo:

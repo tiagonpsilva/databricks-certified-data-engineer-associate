@@ -4,9 +4,10 @@
 
 Jobs com múltiplas tasks permitem orquestrar pipelines complexos, dividir etapas (ingestão, transformação, carga), facilitar reuso e paralelismo, além de simplificar o monitoramento e a recuperação de falhas. Isso torna o pipeline mais modular, escalável e resiliente a falhas.
 
-Diagrama ASCII:
 ```
-[Ingestão] -> [Limpeza] -> [Agregação] -> [Carga em Dashboard]
+┌──────────┐   ┌──────────┐   ┌────────────┐   ┌──────────────┐
+│Ingestão  │-->| Limpeza  │-->| Agregação  │-->| Dashboard/BI │
+└──────────┘   └──────────┘   └────────────┘   └──────────────┘
 ```
 
 Exemplo:
@@ -16,9 +17,10 @@ Exemplo:
 
 Tasks predecessoras garantem que uma etapa só inicie após a conclusão (com sucesso) de outra, permitindo dependências explícitas e controle de fluxo. Isso evita que etapas críticas sejam executadas fora de ordem e facilita o troubleshooting.
 
-Diagrama ASCII:
 ```
-[Task 1] ---> [Task 2] ---> [Task 3]
+┌───────┐   ┌───────┐   ┌───────┐
+│Task 1 │-->|Task 2 │-->|Task 3 │
+└───────┘   └───────┘   └───────┘
 ```
 
 Exemplo:
@@ -38,15 +40,22 @@ schedule = {"quartz_cron_expression": "0 0 2 * * ?"}
 
 Políticas de retry permitem reexecutar tasks automaticamente em caso de falha, aumentando a robustez do pipeline. Alertas podem ser configurados para notificar por e-mail ou outros canais em caso de falha, facilitando resposta rápida e proativa da equipe.
 
-Diagrama ASCII:
 ```
-[Task Falhou]
-     |
-[Retry 1]
-     |
-[Retry 2]
-     |
-[Alerta por E-mail]
+┌────────────┐
+│Task Falhou │
+└─────┬──────┘
+      |
+  ┌───▼───┐
+  │Retry 1│
+  └───┬───┘
+      |
+  ┌───▼───┐
+  │Retry 2│
+  └───┬───┘
+      |
+┌─────▼─────┐
+│Alerta/E-mail│
+└────────────┘
 ```
 
 Exemplo:

@@ -8,17 +8,16 @@ Exemplo:
 - Data warehouse: tabelas SQL, ETL tradicional, dados limpos e modelados.
 - Data lakehouse: arquivos Parquet/Delta, ingestão de dados brutos, processamento incremental, consultas SQL e ML no mesmo ambiente.
 
-Diagrama comparativo:
 ```
-+---------------------+         +----------------------+
-|   Data Warehouse    |         |   Data Lakehouse     |
-+---------------------+         +----------------------+
-| Dados estruturados  |         | Dados estruturados   |
-| BI tradicional      |         | Semiestruturados     |
-| ETL tradicional     |         | Não estruturados     |
-| Governança forte    |         | Governança forte     |
-| Performance alta    |         | Performance alta     |
-+---------------------+         +----------------------+
+┌─────────────────────┐         ┌──────────────────────┐
+│   Data Warehouse   │         │   Data Lakehouse     │
+├─────────────────────┤         ├──────────────────────┤
+│ Dados estruturados │         │ Dados estruturados   │
+│ BI tradicional     │         │ Semiestruturados     │
+│ ETL tradicional    │         │ Não estruturados     │
+│ Governança forte   │         │ Governança forte     │
+│ Performance alta   │         │ Performance alta     │
+└─────────────────────┘         └──────────────────────┘
 ```
 
 ---
@@ -42,17 +41,16 @@ A arquitetura Bronze, Silver e Gold organiza o fluxo de dados em camadas:
 - **Silver:** Dados limpos, validados e enriquecidos, prontos para análises intermediárias.
 - **Gold:** Dados agregados e otimizados para relatórios, dashboards e consumo por áreas de negócio.
 
-Diagrama ASCII:
 ```
-[Raw Data]
-    |
-    v
-+--------+    +--------+    +------+
-| Bronze | -> | Silver | -> | Gold |
-+--------+    +--------+    +------+
-    |             |            |
-    v             v            v
- Ingestão     Limpeza      Agregação
+        [Raw Data]
+             |
+             v
+   ┌───────┐   ┌───────┐   ┌─────┐
+   │Bronze │-->|Silver │-->|Gold │
+   └───────┘   └───────┘   └─────┘
+       |           |           |
+       v           v           v
+   Ingestão    Limpeza    Agregação
 ```
 
 Exemplo de pipeline multi-hop:
@@ -73,21 +71,20 @@ A arquitetura do Databricks é dividida em dois planos:
 - **Plano de Controle:** Responsável pela interface, APIs, gerenciamento e autenticação. É gerenciado pela própria Databricks.
 - **Plano de Dados:** Onde ficam os clusters, arquivos e dados do cliente, hospedados na nuvem do próprio cliente.
 
-Diagrama ASCII:
 ```
-[Usuário]
-    |
-    v
-+---------------------+
-| Plano de Controle   |
-| (UI, APIs, Mgmt)    |
-+---------------------+
-    |
-    v
-+---------------------+
-| Plano de Dados      |
-| (Clusters, DBFS)    |
-+---------------------+
+   [Usuário]
+       |
+       v
+┌───────────────────────┐
+│ Plano de Controle     │
+│ (UI, APIs, Mgmt)      │
+└───────────────────────┘
+       |
+       v
+┌───────────────────────┐
+│ Plano de Dados        │
+│ (Clusters, DBFS)      │
+└───────────────────────┘
 ```
 
 ---
