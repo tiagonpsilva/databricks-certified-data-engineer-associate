@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=tiagonpsilva&repo=databricks-certified-data-engineer-associate&layout=compact" alt="Top Langs" />
+  <img src="https://img.shields.io/badge/Databricks-FF3621?style=for-the-badge&logo=databricks&logoColor=white" alt="Databricks" />
+  <img src="https://komarev.com/ghpvc/?username=tiagonpsilva&repo=databricks-certified-data-engineer-associate&color=orange" alt="Visualizações" />
+</p>
+
 # 📚 Databricks Certified Data Engineer Associate - Guia Completo
 
 Este repositório segue a estrutura do outline oficial do exame Databricks Certified Data Engineer Associate, detalhando cada seção, sub-tópico e objetivo conforme o arquivo de referência.
