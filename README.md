@@ -21,12 +21,12 @@ Este repositório segue a estrutura do outline oficial do exame Databricks Certi
   - [06-sample-questions.md](./06-sample-questions.md) — Questões de Exemplo e Gabarito
 
 - **Exercícios:**
-  - Todos os exercícios de cada capítulo estão organizados na pasta [`exercicios`](./exercicios/):
-    - [01-lakehouse-platform-exercicios.md](./exercicios/01-lakehouse-platform-exercicios.md)
-    - [02-elt-spark-exercicios.md](./exercicios/02-elt-spark-exercicios.md)
-    - [03-incremental-processing-exercicios.md](./exercicios/03-incremental-processing-exercicios.md)
-    - [04-production-pipelines-exercicios.md](./exercicios/04-production-pipelines-exercicios.md)
-    - [05-data-governance-exercicios.md](./exercicios/05-data-governance-exercicios.md)
+  - Todos os exercícios de cada capítulo estão organizados na pasta [`exercises`](./exercises/):
+    - [01-lakehouse-platform-exercicios.md](./exercises/01-lakehouse-platform-exercicios.md)
+    - [02-elt-spark-exercicios.md](./exercises/02-elt-spark-exercicios.md)
+    - [03-incremental-processing-exercicios.md](./exercises/03-incremental-processing-exercicios.md)
+    - [04-production-pipelines-exercicios.md](./exercises/04-production-pipelines-exercicios.md)
+    - [05-data-governance-exercicios.md](./exercises/05-data-governance-exercicios.md)
 
 - **Exemplos de código:**
   - A pasta [`assets`](./assets/) contém exemplos práticos em SQL, Python e notebooks para cada capítulo:
@@ -45,14 +45,14 @@ Este repositório segue a estrutura do outline oficial do exame Databricks Certi
 ## Organização do Projeto
 
 - Os **capítulos** trazem explicações, conceitos e exemplos comentados.
-- Os **exercícios** estão separados por capítulo na pasta `exercicios` para facilitar a prática e revisão.
+- Os **exercícios** estão separados por capítulo na pasta `exercises` para facilitar a prática e revisão.
 - Os **exemplos de código** (SQL, Python, notebooks) estão na pasta `assets`, prontos para serem executados ou adaptados em ambientes Databricks.
 - O notebook `00-exemplos-integrados.ipynb` reúne todos os exemplos em um único arquivo interativo.
 
 ## Como usar
 
 1. Estude cada capítulo na ordem sugerida.
-2. Pratique com os exercícios da pasta [`exercicios`](./exercicios/).
+2. Pratique com os exercícios da pasta [`exercises`](./exercises/).
 3. Execute e adapte os exemplos da pasta [`assets`](./assets/) conforme seu ambiente.
 4. Utilize o notebook integrado para revisar e testar comandos de forma interativa.
 5. Consulte as questões de exemplo para testar seu conhecimento.
@@ -69,5 +69,5 @@ Este repositório segue a estrutura do outline oficial do exame Databricks Certi
 - [04-production-pipelines.md](./04-production-pipelines.md)
 - [05-data-governance.md](./05-data-governance.md)
 - [06-sample-questions.md](./06-sample-questions.md)
-- [Pasta de Exercícios](./exercicios/)
+- [Pasta de Exercícios](./exercises/)
 - [Pasta de Exemplos (assets)](./assets/) 
