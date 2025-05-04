@@ -14,11 +14,6 @@ SELECT * FROM parquet.`/mnt/dados/parquet_dir/`;
 ```
 - O prefixo após FROM (ex: parquet, csv) indica o tipo de dado.
 
-**Exercício:**
-- Carregue todos os arquivos de um diretório em um DataFrame Spark.
-
----
-
 ## 2.2 Criação de Views e CTEs
 Views e CTEs facilitam a reutilização de queries e a organização do código.
 
@@ -33,11 +28,6 @@ WITH vendas_filtradas AS (
 SELECT * FROM vendas_filtradas;
 ```
 
-**Exercício:**
-- Crie uma view temporária para filtrar vendas acima de R$ 500.
-
----
-
 ## 2.3 Tabelas Externas e JDBC
 Tabelas externas não são Delta Lake e podem ser criadas a partir de conexões JDBC ou arquivos externos.
 
@@ -47,11 +37,6 @@ CREATE TABLE clientes_ext USING CSV OPTIONS (path '/mnt/clientes.csv', header 't
 CREATE TABLE pedidos_jdbc USING JDBC OPTIONS (
   url 'jdbc:mysql://...', dbtable 'pedidos', user '...', password '...');
 ```
-
-**Exercício:**
-- Crie uma tabela externa a partir de um arquivo Parquet.
-
----
 
 ## 2.4 Funções de Contagem e Deduplicação
 - `count_if`, `count(where x is null)`, `count(row)` ignora NULLs.
@@ -64,11 +49,6 @@ SELECT COUNT(DISTINCT cliente_id) FROM vendas;
 CREATE TABLE vendas_unicas AS SELECT DISTINCT * FROM vendas;
 ```
 
-**Exercício:**
-- Remova duplicatas de uma tabela baseada em múltiplas colunas.
-
----
-
 ## 2.5 Validações e Casts
 - Valide unicidade de chave primária com COUNT DISTINCT.
 - Cast de coluna para timestamp, extração de partes de data.
@@ -79,11 +59,6 @@ SELECT COUNT(DISTINCT id) = COUNT(id) FROM clientes; -- Valida PK
 SELECT CAST(data_compra AS TIMESTAMP) FROM vendas;
 SELECT year(data_compra), month(data_compra) FROM vendas;
 ```
-
-**Exercício:**
-- Valide se todos os emails em uma tabela são únicos.
-
----
 
 ## 2.6 Manipulação de Dados Complexos
 - Use dot syntax para acessar campos aninhados.
@@ -96,11 +71,6 @@ SELECT endereco.cidade FROM clientes;
 SELECT explode(itens) FROM pedidos;
 SELECT from_json(json_col, 'struct<campo1:string,campo2:int>') FROM tabela_json;
 ```
-
-**Exercício:**
-- Extraia todos os itens de pedidos usando explode.
-
----
 
 ## 2.7 Joins, Explode, Pivot
 - Joins relacionam tabelas; explode transforma arrays em linhas; flatten "achata" arrays aninhados.
@@ -121,11 +91,6 @@ Tabela Vendas      Tabela Clientes
 SELECT * FROM vendas v JOIN clientes c ON v.cliente_id = c.id;
 SELECT produto, SUM(valor) FROM vendas GROUP BY produto PIVOT (SUM(valor) FOR produto IN ('A', 'B', 'C'));
 ```
-
-**Exercício:**
-- Faça um join entre vendas e produtos e crie uma tabela pivoteada por categoria.
-
----
 
 ## 2.8 UDFs e CASE/WHEN
 - UDFs permitem lógica customizada em SQL.

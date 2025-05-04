@@ -6,35 +6,11 @@ Jobs com múltiplas tasks permitem orquestrar pipelines complexos, dividir etapa
 **Exemplo:**
 - Um job com tasks para ingestão de dados, limpeza, agregação e carga em dashboard.
 
-**Exercício:**
-- Desenhe um pipeline de produção com pelo menos três tasks encadeadas.
-
-```
-[Ingestão] -> [Limpeza] -> [Agregação] -> [Carga em Dashboard]
-```
-
----
-
 ## 4.2 Predecessores em Jobs
 Tasks predecessoras garantem que uma etapa só inicie após a conclusão (com sucesso) de outra, permitindo dependências explícitas e controle de fluxo.
 
 **Exemplo:**
 - Task de agregação só roda após task de limpeza concluir.
-
-**Exercício:**
-- Configure um job com uma task predecessora e explique o fluxo de execução.
-
-```
-Task 1 (Limpeza)
-   |
-   v
-Task 2 (Agregação)
-   |
-   v
-Task 3 (Carga)
-```
-
----
 
 ## 4.3 Execução e Monitoramento de Tasks
 - O histórico de execução permite auditar execuções passadas, identificar falhas e analisar performance.
@@ -46,11 +22,6 @@ Task 3 (Carga)
 # Agendamento CRON: todo dia às 2h
 schedule = {"quartz_cron_expression": "0 0 2 * * ?"}
 ```
-
-**Exercício:**
-- Programe um job para rodar toda segunda-feira às 8h e simule uma falha para analisar os logs.
-
----
 
 ## 4.4 Políticas de Retry e Alertas
 - Políticas de retry permitem reexecutar tasks automaticamente em caso de falha, aumentando a robustez do pipeline.

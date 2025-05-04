@@ -19,9 +19,6 @@ O data lakehouse combina a flexibilidade e baixo custo do data lake com a govern
 - Data warehouse: tabelas SQL, ETL tradicional, dados limpos e modelados.
 - Data lakehouse: arquivos Parquet/Delta, ingestão de dados brutos, processamento incremental, consultas SQL e ML no mesmo ambiente.
 
-**Exercício:**
-- Liste três vantagens do lakehouse sobre o data warehouse tradicional.
-
 ---
 
 ## 1.2 Melhoria da Qualidade de Dados no Lakehouse
@@ -35,9 +32,6 @@ O lakehouse melhora a qualidade dos dados em relação ao data lake tradicional 
 -- Consulta a uma versão anterior de uma tabela Delta
 SELECT * FROM vendas VERSION AS OF 2;
 ```
-
-**Exercício:**
-- Explique como o schema enforcement pode evitar problemas de qualidade de dados.
 
 ---
 
@@ -59,9 +53,6 @@ CREATE TABLE silver AS SELECT * FROM bronze WHERE status = 'OK';
 -- Gold: agregação
 CREATE TABLE gold AS SELECT categoria, SUM(valor) FROM silver GROUP BY categoria;
 ```
-
-**Exercício:**
-- Dê um exemplo de workload que consome uma tabela gold.
 
 ---
 
@@ -89,9 +80,6 @@ A arquitetura é dividida em plano de controle (UI, APIs, gerenciamento) e plano
 [Usuário] -> [Plano de Controle (UI, APIs)] -> [Plano de Dados (Clusters, DBFS, Dados)]
 ```
 
-**Exercício:**
-- Explique a diferença entre plano de controle e plano de dados.
-
 ---
 
 ## 1.5 Clusters
@@ -109,9 +97,6 @@ import requests
 requests.post('https://<workspace-url>/api/2.0/clusters/create', json={...})
 ```
 
-**Exercício:**
-- Quando é melhor usar um job cluster em vez de um all-purpose cluster?
-
 ---
 
 ## 1.6 Notebooks
@@ -128,9 +113,6 @@ df = spark.read.csv('/tmp/dados.csv')
 SELECT COUNT(*) FROM tabela_temporaria
 ```
 
-**Exercício:**
-- Importe um notebook externo e execute comandos em duas linguagens diferentes.
-
 ---
 
 ## 1.7 Databricks Repos e Versionamento
@@ -141,5 +123,4 @@ SELECT COUNT(*) FROM tabela_temporaria
 **Exemplo prático:**
 - Adicione um repositório Git ao Databricks Repos e faça um commit de alteração em um notebook.
 
-**Exercício:**
-- Liste duas vantagens de usar Repos em vez do versionamento nativo de notebooks. 
+--- 
