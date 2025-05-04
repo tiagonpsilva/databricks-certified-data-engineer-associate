@@ -1,4 +1,4 @@
-# 2. ELT com Apache Spark
+# ⚡ 2. ELT com Apache Spark
 
 ## 2.1 Extração de Dados
 O Apache Spark permite extrair dados de arquivos individuais ou diretórios inteiros, suportando múltiplos formatos (CSV, Parquet, JSON, etc).
@@ -105,6 +105,16 @@ SELECT from_json(json_col, 'struct<campo1:string,campo2:int>') FROM tabela_json;
 ## 2.7 Joins, Explode, Pivot
 - Joins relacionam tabelas; explode transforma arrays em linhas; flatten "achata" arrays aninhados.
 - PIVOT converte dados de formato longo para largo.
+
+```
+Tabela Vendas      Tabela Clientes
+    |                   |
+    +--------+----------+
+             |
+           [JOIN]
+             |
+         Tabela Final
+```
 
 **Exemplo:**
 ```sql

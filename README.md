@@ -1,4 +1,4 @@
-# Databricks Certified Data Engineer Associate - Guia Completo
+# 📚 Databricks Certified Data Engineer Associate - Guia Completo
 
 Este repositório segue a estrutura do outline oficial do exame Databricks Certified Data Engineer Associate, detalhando cada seção, sub-tópico e objetivo conforme o arquivo de referência.
 

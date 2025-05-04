@@ -1,4 +1,4 @@
-# 6. Questões de Exemplo e Gabarito
+# ❓ 6. Questões de Exemplo e Gabarito
 
 Estas questões são retiradas de versões anteriores do exame e servem para ilustrar os objetivos do exame e o tipo de pergunta que pode ser cobrada.
 

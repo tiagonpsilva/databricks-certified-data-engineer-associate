@@ -1,6 +1,16 @@
-# 3. Processamento Incremental de Dados
+# 🔄 3. Processamento Incremental de Dados
 
 ## 3.1 ACID Transactions e Delta Lake
+
+```
++-------------------+
+|   Delta Lake      |
++-------------------+
+| ACID Transactions |
+| Time Travel       |
+| Rollback         |
++-------------------+
+```
 O Delta Lake garante transações ACID (Atomicidade, Consistência, Isolamento, Durabilidade) para operações de leitura e escrita, protegendo a integridade dos dados mesmo em cenários de falha.
 
 **Exemplo:**
@@ -30,6 +40,12 @@ CREATE TABLE vendas_ext (id INT, valor DOUBLE) USING DELTA LOCATION '/mnt/dados/
 ---
 
 ## 3.3 Versionamento e Histórico
+
+```
+[Operação 1] -> [Operação 2] -> [Operação 3]
+      |             |             |
+   Versão 1      Versão 2      Versão 3
+```
 O Delta Lake mantém histórico de todas as operações, permitindo auditoria, rollback e time travel.
 
 **Exemplo:**
@@ -79,6 +95,11 @@ COMMENT ON TABLE vendas IS 'Tabela de vendas processadas';
 ---
 
 ## 3.6 MERGE, COPY INTO e DLT
+
+```
+[Novos Dados] -> [MERGE] -> [Tabela Destino]
+[Arquivos Externos] -> [COPY INTO] -> [Tabela Destino]
+```
 - **MERGE:** faz upsert/deduplicação ao escrever.
 - **COPY INTO:** carrega dados de arquivos externos sem duplicar.
 - **DLT:** pipelines declarativos para ingestão e transformação.

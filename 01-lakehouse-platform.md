@@ -1,6 +1,18 @@
-# 1. Databricks Lakehouse Platform
+# 🏝️ 1. Databricks Lakehouse Platform
 
 ## 1.1 Relação entre Data Lakehouse e Data Warehouse
+
+```
++-------------------+         +-------------------+
+|   Data Warehouse  |         |   Data Lakehouse  |
++-------------------+         +-------------------+
+| Dados estruturados|         | Dados estruturados|
+| BI tradicional    |         | + semiestruturados|
+| ETL tradicional   |         | + não estruturados|
+| Governança forte  |         | Governança forte  |
+| Performance alta  |         | Performance alta  |
++-------------------+         +-------------------+
+```
 O data lakehouse combina a flexibilidade e baixo custo do data lake com a governança, performance e confiabilidade do data warehouse. Enquanto o data warehouse é ótimo para dados estruturados e BI, o lakehouse permite trabalhar com dados estruturados, semiestruturados e não estruturados, suportando workloads de BI, ciência de dados e machine learning em uma única plataforma.
 
 **Exemplo:**
@@ -34,6 +46,10 @@ SELECT * FROM vendas VERSION AS OF 2;
 - **Silver:** dados limpos, transformados e enriquecidos.
 - **Gold:** dados prontos para análise, agregados e otimizados para BI.
 
+```
+[Raw Data] -> [Bronze] -> [Silver] -> [Gold] -> [BI/Analytics]
+```
+
 **Exemplo de pipeline multi-hop:**
 ```sql
 -- Bronze: ingestão
@@ -50,6 +66,22 @@ CREATE TABLE gold AS SELECT categoria, SUM(valor) FROM silver GROUP BY categoria
 ---
 
 ## 1.4 Arquitetura da Plataforma Databricks
+
+```
+Usuário
+  |
+  v
++-------------------+
+| Plano de Controle |
+| (UI, APIs, Mgmt)  |
++-------------------+
+  |
+  v
++-------------------+
+| Plano de Dados    |
+| (Clusters, DBFS)  |
++-------------------+
+```
 A arquitetura é dividida em plano de controle (UI, APIs, gerenciamento) e plano de dados (clusters, DBFS, dados do cliente). O plano de controle é gerenciado pela Databricks; o plano de dados reside na cloud do cliente.
 
 **Desenho simplificado:**

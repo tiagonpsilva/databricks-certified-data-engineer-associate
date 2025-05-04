@@ -1,4 +1,4 @@
-# 4. Pipelines de Produção
+# 🏭 4. Pipelines de Produção
 
 ## 4.1 Benefícios de Múltiplas Tasks em Jobs
 Jobs com múltiplas tasks permitem orquestrar pipelines complexos, dividir etapas (ingestão, transformação, carga), facilitar reuso e paralelismo, além de simplificar o monitoramento e a recuperação de falhas.
@@ -8,6 +8,10 @@ Jobs com múltiplas tasks permitem orquestrar pipelines complexos, dividir etapa
 
 **Exercício:**
 - Desenhe um pipeline de produção com pelo menos três tasks encadeadas.
+
+```
+[Ingestão] -> [Limpeza] -> [Agregação] -> [Carga em Dashboard]
+```
 
 ---
 
@@ -19,6 +23,16 @@ Tasks predecessoras garantem que uma etapa só inicie após a conclusão (com su
 
 **Exercício:**
 - Configure um job com uma task predecessora e explique o fluxo de execução.
+
+```
+Task 1 (Limpeza)
+   |
+   v
+Task 2 (Agregação)
+   |
+   v
+Task 3 (Carga)
+```
 
 ---
 

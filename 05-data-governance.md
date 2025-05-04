@@ -1,4 +1,4 @@
-# 5. Governança de Dados
+# 🛡️ 5. Governança de Dados
 
 ## 5.1 Áreas de Governança de Dados
 A governança de dados abrange segurança, privacidade, qualidade e conformidade. No Databricks, isso inclui controle de acesso, rastreabilidade, segregação de ambientes e uso de catálogos/metastores.
@@ -59,3 +59,10 @@ GRANT SELECT ON ALL TABLES IN SCHEMA vendas.marketing TO `grupo_marketing`;
 
 **Exercício:**
 - Liste três boas práticas de governança de dados ao estruturar um ambiente Databricks corporativo. 
+
+```
+[Metastore]
+    |
+    v
+[Catálogo] -> [Schema] -> [Tabela]
+``` 
